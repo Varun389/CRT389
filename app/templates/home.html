@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Games</title>
+</head>
+
+<body>
+
+    <h1>Game Collection</h1>
+
+    <a href="/add-game/">
+        Add Game
+    </a>
+
+    <hr>
+
+    {% for game in games %}
+
+        <h2>{{ game.title }}</h2>
+
+        <p>
+            <strong>Genre:</strong>
+            {{ game.genre }}
+        </p>
+
+        <p>
+            <strong>Release Year:</strong>
+            {{ game.release_year }}
+        </p>
+
+        <p>
+            <strong>Rating:</strong>
+            {{ game.rating }}
+        </p>
+
+        <p>
+            {{ game.description }}
+        </p>
+
+        <a href="/delete-game/{{ game.id }}/">
+            Delete
+        </a>
+
+        <br><br>
+
+        <a href="/add-to-cart/{{ game.id }}/">
+            Add To Cart
+        </a>
+
+        <br><br>
+
+        {% if game.is_cart %}
+
+            <strong>
+                Added To Cart
+            </strong>
+
+        {% endif %}
+
+        <hr>
+
+    {% endfor %}
+
+</body>
+</html>
